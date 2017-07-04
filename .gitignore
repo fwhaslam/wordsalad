@@ -1,0 +1,10 @@
+#  gitignore for Fieds Concept Project
+
+# maven nature
+**/target
+
+# intellij nature
+**/.idea
+**.iml
+
+
