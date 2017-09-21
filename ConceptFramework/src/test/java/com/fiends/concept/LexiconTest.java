@@ -25,4 +25,5 @@ public class LexiconTest {
 
 		assertEquals("SampleLexicon", lexicon.getIdentifier() );
 	}
+
 }

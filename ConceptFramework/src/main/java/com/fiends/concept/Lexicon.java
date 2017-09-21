@@ -44,7 +44,7 @@ abstract public class Lexicon implements Identifiable {
 
 //======================================================================================================================
 
-	public Concept createConcept(){return conceptRegistry.create();}
+	public Concept fixConcept(Set<Term> termSet){return conceptRegistry.fix(termSet);}
 
 	public Concept findConcept(String identifier){return conceptRegistry.find(identifier);}
 

@@ -1,7 +1,7 @@
 package com.fiends.concept;
 
 /**
- * This enumeration is basd on the University of Pennsylvania Treeback Tag Set for English
+ * This enumeration is basd on the University of Pennsylvania Treebank Tag Set for English
  *   see http://www.comp.leeds.ac.uk/amalgam/tagsets/upenn.html
  *   see https://en.wikipedia.org/wiki/Treebank
  *
@@ -12,7 +12,7 @@ package com.fiends.concept;
  */
 public enum PartOfSpeechEnum {
 
-	// we don't know the qualifier of speech for some label
+	// we don't know the part of speech
 	Unknown("unknown"),
 
 	// dollar ::

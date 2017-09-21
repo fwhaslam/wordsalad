@@ -32,7 +32,7 @@ public class TermRegistry {
 		Term found = find(label,qualifier);
 		if (found!=null) return found;
 
-		// create
+		// fix
 		if (!registry.containsKey(label))
 			registry.put( label, new TreeMap<>() );
 

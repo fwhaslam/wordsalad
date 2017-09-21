@@ -2,6 +2,7 @@ package com.fiends.concept;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * A word or short phrase, frequently representing a single concept.
@@ -27,7 +28,7 @@ public class Term implements Comparable<Term> {
 	public Term(String label, String qualifier){
 		this.label = label;
 		this.qualifier = ( qualifier==null ? DEFAULT_QUALIFIER : qualifier);
-		this.conceptSet = new HashSet<>();
+		this.conceptSet = new TreeSet<>();
 	}
 
 	public String getQualifier(){return qualifier;}

@@ -1,6 +1,7 @@
 package com.fiends.concept;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -22,13 +23,24 @@ public class ConceptRegistry {
 	 *
 	 * @return
 	 */
-	public Concept create(){
+	public Concept fix(Set<Term> termSet){
+		Concept concept =  new Concept(termSet);
+		String identifier = concept.getIdentifier();
+//boolean isGoblin = (concept.toString().contains("goblin"));
+//if (isGoblin) System.out.println("IDENTIFIER="+identifier+"    "+concept );
 
-		String conceptIdentifier = UUID.randomUUID().toString();
-		while (registry.containsKey(conceptIdentifier)) conceptIdentifier = UUID.randomUUID().toString();
-
-		registry.put( conceptIdentifier, new Concept(conceptIdentifier) );
-		return registry.get(conceptIdentifier);
+		// already exists
+		if ( registry.containsKey( identifier ) ) {
+//if (isGoblin) System.out.println("DUPLICATE returning "+registry.get(identifier)+" instead");
+			return registry.get(identifier);
+		}
+		// new concept, bind to terms
+		else {
+			registry.put(identifier, concept);
+			for (Term term : termSet) term.bind(concept);
+//if (isGoblin) System.out.println("ORIGINAL returning "+concept);
+			return concept;
+		}
 	}
 
 	/**
