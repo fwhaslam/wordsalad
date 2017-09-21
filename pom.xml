@@ -17,6 +17,7 @@
 		<module>TestUtils</module>
 		<module>ConceptFramework</module>
 		<module>OpenOfficeSynonymLexicon</module>
+		<module>NameMaker</module>
 		<module>WordService</module>
 	</modules>
 
