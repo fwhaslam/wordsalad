@@ -88,13 +88,14 @@ public class ServiceRunner {
 	}
 
 	/**
-	 * Utility for reading response bodies.
+	 * Utility for reading response bodies; normalized to display MAC + WIN responses the same.
 	 * @param response
 	 * @return
 	 * @throws IOException
 	 */
-	static public String asString(Response response) throws IOException {
-		return IOUtils.toString((InputStream)response.getEntity(), Charset.forName("UTF-8"));
+	static public String asUniformString(Response response) throws IOException {
+		String body = IOUtils.toString((InputStream)response.getEntity(), Charset.forName("UTF-8"));
+		return  body.replaceAll("\r","");
 	}
 
 }
