@@ -35,15 +35,11 @@ public class OpenOfficeSynonymLexiconTest {
 //			System.out.println("CONCEPT="+concept.toString());
 //		}
 
-		assertEquals( 3, term.getConceptSet().size() );
+		assertEquals( 1, term.getConceptSet().size() );
 		List<Concept> concepts = new ArrayList<>(term.getConceptSet());
 
-		assertEquals("=(noun)evil spirit/(noun)goblin/(noun)hob/(noun)hobgoblin",
-				concepts.get(0).toString().substring(44));
-		assertEquals("=(noun)evil spirit/(noun)goblin/(noun)hob/(noun)hobgoblin",
-				concepts.get(1).toString().substring(44));
-		assertEquals("=(noun)evil spirit/(noun)goblin/(noun)hob/(noun)hobgoblin",
-				concepts.get(2).toString().substring(44));
+		assertEquals("(noun)evil spirit:(noun)goblin:(noun)hob:(noun)hobgoblin",
+				concepts.get(0).toString());
 
 	}
 

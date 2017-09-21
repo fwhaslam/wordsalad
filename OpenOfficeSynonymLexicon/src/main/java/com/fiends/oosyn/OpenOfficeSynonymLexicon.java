@@ -1,6 +1,5 @@
 package com.fiends.oosyn;
 
-import com.fiends.concept.Concept;
 import com.fiends.concept.Lexicon;
 import com.fiends.concept.Term;
 import com.fiends.tools.GetResource;
@@ -8,9 +7,11 @@ import com.fiends.tools.GetResource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * Synonym Lexicon.  The qualifiers are simplified Parts of Speech:  (noun), (adj), etc.
+ * Synonym Lexicon.  The qualifiers are simplified Parts of Speech:  (noun), (adj), (verb), (adv)
  * @author fwhaslam
  * @since 1.0.0
  */
@@ -77,7 +78,7 @@ public class OpenOfficeSynonymLexicon extends Lexicon {
 			return false;
 		}
 		finally {
-			System.out.println("INITIALIZING OOSL Lexicon -- COMPELETE");
+			System.out.println("INITIALIZING OOSL Lexicon -- COMPLETE");
 		}
 	}
 
@@ -92,16 +93,18 @@ public class OpenOfficeSynonymLexicon extends Lexicon {
 //if ("goblin".equals(label))
 //	System.out.println("BUILDING "+qualifier+"/goblin");
 
-		// create concept, bind label as first term
-		Concept concept = createConcept();
-		Term term = fixTerm( label, qualifier );
-		bind(concept, term);
+		Set<Term> termSet = new HashSet<>();
 
-		// bind followup labels to concept
+		// add the label to the set of terms
+		termSet.add( fixTerm( label, qualifier ) );
+
+		// add followup labels to the set of terms
 		for (int ix = 1; ix < tokens.length; ix++) {
-			term = fixTerm( tokens[ix], qualifier );
-			bind(concept, term);
+			termSet.add( fixTerm( tokens[ix], qualifier ) );
 		}
+
+		// fix concept, which binds terms and concept together
+		fixConcept( termSet );
 	}
 
 	/**
@@ -115,4 +118,5 @@ public class OpenOfficeSynonymLexicon extends Lexicon {
 	}
 
 }
+
 
